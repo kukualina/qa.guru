@@ -1,0 +1,25 @@
+{
+  "name": "autot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+    
+  },
+  "scripts": {
+     "test": "playwright test",
+     "test:src": "npm playwright test && ./src/pages/register.Page.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "openai": "^4.67.1"
+  }
+}
