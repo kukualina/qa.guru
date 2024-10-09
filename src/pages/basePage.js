@@ -1,7 +1,7 @@
 // basePage.js
 const { chromium } = require('playwright');
 
-
+//tetst
 export class BasePage {
   constructor(page) {
     this.page = page;
