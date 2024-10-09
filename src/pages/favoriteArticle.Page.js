@@ -9,7 +9,6 @@ class FavoritPage  extends BasePage{
 
   favariteArticle = async () => {
     await this.favoriteButton.click();
-    //return userName;
   }
     
 }

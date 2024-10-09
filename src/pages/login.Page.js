@@ -13,7 +13,6 @@ class LoginPage  extends BasePage{
     await this.userEmailInput.fill(email);
     await this.userPasswordInput.fill(password);
     await this.loginButton.click();
-    //return userName;
   }
     
 }
