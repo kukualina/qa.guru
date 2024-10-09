@@ -13,7 +13,6 @@ class CommentPage  extends BasePage{
     sendComment = async (comment) => {
       await this.commentInput.fill(comment);
       await this.postButton.click();
-      //return userName;
     }
       
   }

@@ -15,7 +15,7 @@ const name = 'Aliiina';
 const nameE = 'a.ttinu@f2.ru';
 const nameP = '23232323';
 
-
+//
   test.describe('New Article',  () => { 
     test.beforeEach(async ({ page }, testInfo) => {
         const registerPage = new RegisterPage(page);
@@ -33,30 +33,10 @@ const nameP = '23232323';
         const name = await articlePage.articleNew('Статья', 'это письменное произведение', 'Статьи бывают разных видов', 'Цель статьи — довести до сознания читателя определённые факты')
         await expect(articlePage.articleTitleHeder).toHaveText(name);
       });
+      
     });
 
-
-
-
-
  
-
-
-  
-    // проверка успешной регистрации
-  //await expect(page).toHaveURL('https://realworld.qa.guru/#/');
-  //await expect(page.locator('h1')).toHaveText('Articles not available.');
-  //await expect(page.locator('text=Your Feed')).toBeVisible();
-  //await expect(page.locator('text=Global Feed')).toBeVisible();
-
-   /* test("register new user", async ({ page }, testInfo) => {
-     await page.goto("https://realworld.qa.guru/#/");
-     await page.getByRole('link', {name: "Sign up"}).click();
-     testInfo.setTimeout(120000);
-     await page.getByPlaceholder('Your Name').click(); 
-     testInfo.setTimeout(120000);
-     await page.getByPlaceholder('Your Name').fill("alina"); 
-    });   */
 
   
 
