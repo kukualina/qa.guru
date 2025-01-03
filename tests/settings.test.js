@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 import { MainPage, RegisterPage, SettingsPage } from "../src/pages/index";
+import * as allure from "allure-js-commons";
 
 let newUser;
 let expectedArticle;
@@ -29,7 +30,9 @@ test.describe("New settings", () => {
     const newBio = faker.lorem.sentence();
     const newPassword = faker.internet.password();
     await settingsPage.settingsUser(newName, newEmail, newBio, newPassword);
-    await expect(mainPage.userNameHeader).toHaveText(newName);
-    await expect(settingsPage.userEmailInput).toHaveValue(newEmail);
+    await allure.step(expect(mainPage.userNameHeader).toHaveText(newName));
+    await allure.step(
+      expect(settingsPage.userEmailInput).toHaveValue(newEmail)
+    );
   });
 });

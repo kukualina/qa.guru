@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { MainPage, RegisterPage, LoginPage } from "../src/pages/index";
 import { faker } from "@faker-js/faker";
+import * as allure from "allure-js-commons";
 
 test.describe("login user", () => {
   let name;
@@ -24,7 +25,7 @@ test.describe("login user", () => {
     const loginPage = new LoginPage(page);
     const mainPage = new MainPage(page);
     await loginPage.loginUser(nameE, nameP);
-    await expect(page).toHaveURL("https://realworld.qa.guru/#/");
-    await expect(mainPage.userNameHeder).toHaveText(name);
+    await allure.step(expect(page).toHaveURL("https://realworld.qa.guru/#/"));
+    await allure.step(expect(mainPage.userNameHeder).toHaveText(name));
   });
 });

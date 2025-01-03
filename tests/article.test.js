@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { RegisterPage, ArticlePage, MainPage } from "../src/pages/index";
 import { faker } from "@faker-js/faker";
+import * as allure from "allure-js-commons";
 
 let newUser;
 let expectedArticle;
@@ -25,5 +26,7 @@ test("write article new", async ({ page }) => {
   const content = faker.lorem.paragraphs(1);
   const tags = "Цель статьи — довести до сознания читателя определённые факты";
   await articlePage.articleNew(title, about, content, tags);
-  await expect(articlePage.articleTitleHeder).toHaveText(articleTitleInput);
+  await allure.step(
+    expect(articlePage.articleTitleHeder).toHaveText(articleTitleInput)
+  );
 });

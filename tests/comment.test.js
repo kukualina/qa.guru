@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 import { MainPage, RegisterPage, CommentPage } from "../src/pages/index";
+import * as allure from "allure-js-commons";
 
 const url = "https://realworld.qa.guru/#/article/--";
 
@@ -27,6 +28,8 @@ test.describe("New comment", () => {
     const mainPage = new MainPage(page);
     const commentText = "met";
     await commentPage.sendComment(commentText);
-    await expect(commentPage.answerComment).toHaveText(commentText);
+    await allure.step(
+      expect(commentPage.answerComment).toHaveText(commentText)
+    );
   });
 });
