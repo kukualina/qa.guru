@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","302","login user","chromium","Fri Jan 03 19:55:52 MSK 2025","failed","Fri Jan 03 19:55:52 MSK 2025","login user","login.test.js","",""
+"","115","settings user","chromium","Fri Jan 03 19:55:55 MSK 2025","failed","Fri Jan 03 19:55:55 MSK 2025","New settings","settings.test.js","",""
+"","2298","send comment","chromium","Fri Jan 03 19:55:52 MSK 2025","failed","Fri Jan 03 19:55:54 MSK 2025","New comment","comment.test.js","",""
+"","2675","write article new","chromium","Fri Jan 03 19:55:52 MSK 2025","failed","Fri Jan 03 19:55:55 MSK 2025","","article.test.js","",""
+"","2016","register new user","chromium","Fri Jan 03 19:55:53 MSK 2025","failed","Fri Jan 03 19:55:55 MSK 2025","","register.test.js","",""
+"","2099","the user can view their favorite article","chromium","Fri Jan 03 19:55:52 MSK 2025","failed","Fri Jan 03 19:55:54 MSK 2025","","favorit.test.js","",""

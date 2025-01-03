@@ -1,0 +1,63 @@
+name: pw tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: checkout branch
+        uses: actions/checkout@v4
+
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: install deps
+        run: npm install
+
+      - name: install pw
+        run: npx playwright install
+
+      - name: run pw tests
+        run: npm run test
+
+      - name: upload allure results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 1
+
+      - name: get allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: generate allure report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 10
+
+      - name: deploy report to gh-pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
+          publish_branch: gh-pages
