@@ -1,14 +1,7 @@
-export * from '../pages/main.Page';
-export * from '../pages/register.Page';
-export * from '../pages/new.Article';
-export * from '../pages/comment.Page';
-export * from '../pages/settings.Page';
-export * from '../pages/favoriteArticle.Page';
-export * from '../pages/login.Page';
-
-
-
-
-
-
-
+export * from "./commentPage";
+export * from "./favoriteArticlePage";
+export * from "./loginPage";
+export * from "./mainPage";
+export * from "./newArticlePage";
+export * from "./registerPage";
+export * from "./settingsPage";

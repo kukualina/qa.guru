@@ -1,41 +1,35 @@
-
 import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
-import { MainPage, RegisterPage, SettingsPage, ArticlePage} from "../src/pages/index";
-import { RegisterPage as MyRegisterPage } from "../src/pages/register.Page";
-import { link } from "fs";
-import exp from "constants";
+import { MainPage, RegisterPage, SettingsPage } from "../src/pages/index";
 
-//const url = "https://realworld.qa.guru/#/settings";
 let newUser;
 let expectedArticle;
 
-const name = 'Aliiina';
-const nameE = 'a.ttrinu@f2.ru';
-const nameP = '23232323';
+test.describe("New settings", () => {
+  test.beforeEach(async ({ page }, testInfo) => {
+    const registerPage = new RegisterPage(page);
+    const name = faker.name.findName();
+    const email = faker.internet.email();
+    const password = faker.internet.password();
 
-test.describe('New settings',  () => { 
-    test.beforeEach(async ({ page }, testInfo) => {
-        const registerPage = new RegisterPage(page);
-        await page.goto("https://realworld.qa.guru/#/register");
-        await registerPage.registerUser(name, nameE, nameP);
-        console.log(1);
-        await page.waitForTimeout(20000); 
-       });
-       test('settings user', async ({ page }) => {
-        await page.goto("https://realworld.qa.guru/#/settings");
-        const settingsPage = new SettingsPage(page);
-        const mainPage = new MainPage(page);
-        const name = await settingsPage.settingsUser('Vova', 'a.Vovqa@fo2.ru', 'My test' ,'156')
-        await expect(mainPage.userNameHeader).toHaveText('Vova');
-        await expect(settingsPage.userEmailInput).toHaveValue('a.Vovqa@fo2.ru');
-      });
-    });
+    await page.goto("https://realworld.qa.guru/#/register");
+    await registerPage.registerUser(name, email, password);
+    console.log(
+      `Registered user: "${name}, Email: ${email}, Password: ${password}"`
+    );
+    await page.waitForTimeout(20000);
+  });
 
-
-
-  
-
-
-
-
+  test("settings user", async ({ page }) => {
+    await page.goto("https://realworld.qa.guru/#/settings");
+    const settingsPage = new SettingsPage(page);
+    const mainPage = new MainPage(page);
+    const newName = faker.name.findName();
+    const newEmail = faker.internet.email();
+    const newBio = faker.lorem.sentence();
+    const newPassword = faker.internet.password();
+    await settingsPage.settingsUser(newName, newEmail, newBio, newPassword);
+    await expect(mainPage.userNameHeader).toHaveText(newName);
+    await expect(settingsPage.userEmailInput).toHaveValue(newEmail);
+  });
+});

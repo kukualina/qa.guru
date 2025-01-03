@@ -5,21 +5,25 @@
   "main": "index.js",
   "directories": {
     "test": "tests"
-    
   },
   "scripts": {
-     "test": "playwright test",
-     "test:src": "npm playwright test && ./src/pages/register.Page.js"
+    "test": "npx playwright test",
+    "test:api": "playwright test --grep @api",
+    "debug": "npx playwright test --ui",
+    "allureGenerate": "allure generate --clean",
+    "allureOpen": "allure open",
+    "allure": "allure serve allure-results"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.47.2",
+    "@faker-js/faker": "^7.3.0",
+    "@playwright/test": "^1.49.1",
     "@types/node": "^22.7.4"
   },
   "dependencies": {
-    "@faker-js/faker": "^9.0.3",
+    "faker": "^6.6.6",
     "openai": "^4.67.1"
   }
 }
