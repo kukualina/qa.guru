@@ -13,7 +13,7 @@ test("register new user", async ({ page }) => {
   const email = faker.internet.email();
   const password = faker.internet.password();
   await registerPage.registerUser(name, email, password);
-  await allure.step(expect(page).toHaveURL(url));
+  expect(page).toHaveURL(url);
   console.log(mainPage.userNameHeder);
-  await allure.step(expect(mainPage.userNameHeder).toHaveText(name));
+  expect(mainPage.userNameHeader).toHaveText(name);
 });

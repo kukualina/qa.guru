@@ -1,14 +1,18 @@
 // mainPage.js
+import { name } from "../../playwright.config";
 import { BasePage } from "./basePage";
 
 class MainPage extends BasePage {
   constructor(page) {
     super(page);
-    this.userNameHeder = page.locator(
+    this.userNameHeader = page.locator(
       ".nav-link.dropdown-toggle.cursor-pointer"
     );
-    this.articleTitleHeder = page.getByText("New Article");
+
+    this.articleTitleHeader = page.locator(".container").nth(0);
+    //page.getByText("New Article");
     this.answerComment = page.locator(".card-text");
+    return name;
   }
 }
 
