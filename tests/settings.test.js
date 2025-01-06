@@ -18,7 +18,7 @@ test.describe("New settings", () => {
     console.log(
       `Registered user: "${name}, Email: ${email}, Password: ${password}"`
     );
-    await page.waitForTimeout(20000);
+    // await page.waitForTimeout(20000);
   });
 
   test("settings user", async ({ page }) => {
@@ -30,9 +30,7 @@ test.describe("New settings", () => {
     const newBio = faker.lorem.sentence();
     const newPassword = faker.internet.password();
     await settingsPage.settingsUser(newName, newEmail, newBio, newPassword);
-    await allure.step(expect(mainPage.userNameHeader).toHaveText(newName));
-    await allure.step(
-      expect(settingsPage.userEmailInput).toHaveValue(newEmail)
-    );
+    expect(mainPage.userNameHeader).toHaveText(newName);
+    expect(settingsPage.userEmailInput).toHaveValue(newEmail);
   });
 });

@@ -11,9 +11,9 @@ class ArticlePage extends BasePage {
       "Write your article (in markdown)"
     );
     this.enterTagsInput = page.getByPlaceholder("Enter tags");
-    this.publishButton = page.locator(".btn.btn-lg.pull-xs-right.btn-primary");
+    this.publishButton = page.getByRole("button", { name: "Publish Article" });
+    //page.locator(".btn.btn-lg.pull-xs-right.btn-primary");
   }
-
   async articleNew(title, about, content, tags) {
     await this.articleTitleInput.fill(title);
     await this.aboutArticleInput.fill(about);

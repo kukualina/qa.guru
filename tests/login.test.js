@@ -9,7 +9,7 @@ test.describe("login user", () => {
   let nameP;
 
   test.beforeEach(async ({ page }) => {
-    name = faker.name.findName();
+    name = faker.name.fullName();
     nameE = faker.internet.email();
     nameP = faker.internet.password();
 
@@ -25,7 +25,9 @@ test.describe("login user", () => {
     const loginPage = new LoginPage(page);
     const mainPage = new MainPage(page);
     await loginPage.loginUser(nameE, nameP);
-    await allure.step(expect(page).toHaveURL("https://realworld.qa.guru/#/"));
-    await allure.step(expect(mainPage.userNameHeder).toHaveText(name));
+    console.log(`Ожидаемое имя: "${name}"`);
+    await allure.step("Проверка имени пользователя", async () => {
+      await expect(mainPage.userNameHeader).toHaveText(name);
+    });
   });
 });

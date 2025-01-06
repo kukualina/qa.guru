@@ -14,7 +14,7 @@ test.describe("New comment", () => {
     const registerPage = new RegisterPage(page);
     const context = await registerPage.startBrowser();
     await page.goto("https://realworld.qa.guru/#/register");
-    name = faker.name.findName();
+    name = faker.name.fullName();
     nameE = faker.internet.email();
     nameP = faker.internet.password();
 
@@ -28,8 +28,6 @@ test.describe("New comment", () => {
     const mainPage = new MainPage(page);
     const commentText = "met";
     await commentPage.sendComment(commentText);
-    await allure.step(
-      expect(commentPage.answerComment).toHaveText(commentText)
-    );
+    expect(commentPage.answerComment).toHaveText(commentText);
   });
 });

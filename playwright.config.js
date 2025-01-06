@@ -74,9 +74,9 @@ module.exports = defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: "npm run start",
-  //   url: "https://www.google.com/",
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: "npm run start",
+    url: "https://www.google.com/",
+    reuseExistingServer: !process.env.CI,
+  },
 });
